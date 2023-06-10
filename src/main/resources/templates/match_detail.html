@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>데이트 아누?</title>
+</head>
+<body>
+    <h1>매칭 정보</h1>
+    <div th:text="@{|매칭 신청자 아이디 : ${match.getMatchApplyUserId()}|}"></div>
+    <div th:text="@{|매치된 회원 아이디 : ${match.getMatchedUserId()}|}"></div>
+    <div th:text="@{|매치된 회원 이름 : ${match.getMatchedClient().getName()}|}"></div>
+    <div th:text="@{|매칭 시간 : ${match.getMatchedTime()}|}"></div>
+</body>
+</html>

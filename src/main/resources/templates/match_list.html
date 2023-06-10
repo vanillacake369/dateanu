@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>데이트 아누?</title>
+</head>
+<body>
+    <h2>MATCH LIST</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>match id | </th>
+                <th>applier | </th>
+                <th>matched</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="match, index : ${matchList}">
+                <td>
+                    <a th:href="@{|/match/detail/${match.id}|}" th:text="${match.matchApplyUserId}"></a>
+                </td>
+<!--                <td th:text="${match.id}"></td>-->
+<!--                <td th:text="${match.matchApplyUserId}"></td>-->
+<!--                <td th:text="${match.matchedUserId}"></td>-->
+<!--                <td th:text="${match.matchedTime}"></td>-->
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
