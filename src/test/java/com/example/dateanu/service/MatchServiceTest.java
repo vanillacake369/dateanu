@@ -26,8 +26,6 @@ class MatchServiceTest {
     void getMatchAll() {
         // given
         Match match = new Match();
-        match.setMatchApplyUserId((long)1);
-        match.setMatchedUserId((long)2);
         match.setMatchedTime(LocalDateTime.now());
         match.setMatchedClient(clientRepository.getReferenceById((long) 1));
         this.matchRepository.save(match);
