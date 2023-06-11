@@ -1,5 +1,6 @@
 package com.example.dateanu.entity;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,27 +20,19 @@ import java.time.LocalDateTime;
 @Entity
 public class Match {
     @Id // 기본키
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment
+    @GeneratedValue
+    @Column(name = "match_id")
     private Long id;
-
-    private Long matchApplyUserId;
-
-    private Long matchedUserId;
 
     private LocalDateTime matchedTime;
 
-    @ManyToOne
-    @JoinColumn(name="match_id",nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="matched_client_id",nullable = false)
     private Client matchedClient;
 
-    @Override
-    public String toString() {
-        return "Match{" +
-                "id=" + id +
-                ", matchApplyUserId=" + matchApplyUserId +
-                ", matchedUserId=" + matchedUserId +
-                ", matchedTime=" + matchedTime +
-                ", matchedClient=" + matchedClient +
-                '}';
-    }
+
+    private LocalDateTime timeJoined;
+
+    @Nullable
+    private LocalDateTime timeLeft;
 }

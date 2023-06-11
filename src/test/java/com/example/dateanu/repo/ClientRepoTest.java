@@ -22,14 +22,16 @@ public class ClientRepoTest {
     void clientInsertTest(){
         // given
         Client clientA = new Client();
-        clientA.setName("홍길동");
+        clientA.setFirst_name("홍");
+        clientA.setLast_name("길동");
         clientA.setEmail("gildong@naver.com");
         clientA.setPassword("2iwEHkdl");
         clientA.setClientCreatedTime(LocalDateTime.now());
         this.clientRepository.save(clientA);
 
         Client clientB = new Client();
-        clientB.setName("김고은");
+        clientB.setFirst_name("김");
+        clientB.setFirst_name("고은");
         clientB.setEmail("goeun130@naver.com");
         clientB.setPassword("slaiSDLIN");
         clientB.setClientCreatedTime(LocalDateTime.now());

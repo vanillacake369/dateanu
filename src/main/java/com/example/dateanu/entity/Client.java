@@ -5,17 +5,26 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
+
+import static jakarta.persistence.FetchType.LAZY;
 
 @Getter
 @Setter
 @Entity
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
-    private String name;
+    private String first_name;
+    
+    private String last_name;
+    
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name="gender_id")
+    private Gender gender;
 
     private String email;
 
@@ -23,6 +32,16 @@ public class Client {
 
     private LocalDateTime clientCreatedTime;
 
-    @OneToMany(mappedBy = "matchedClient", cascade = CascadeType.REMOVE)
-    private Set<Match> matches;
+    @OneToMany(mappedBy = "matchedClient", cascade = CascadeType.ALL)
+    private List<Match> matches;
+
+    @OneToMany(mappedBy = "conversationClient", cascade = CascadeType.ALL)
+    private List<Conversation> conversations;
+
+    @OneToMany(mappedBy = "clientPhotoId",cascade = CascadeType.ALL)
+    private List<ClientPhoto> photos;
+
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "client_hobby")
+    private Hobby clientHobby;
 }
