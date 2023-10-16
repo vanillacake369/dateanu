@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--<html lang="en"> (X) -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>데이트 아누?</title>
+</head>
+<body align="center">
+    <h1>회원가입</h1>
+    <div align="center">
+      <form action="/client/signup" th:object="${new_client}" method="post">
+        <div>
+          <label th:for="firstName">성 : </label>
+<!--          <input type="text" th:field="*{firstName}" placeholder="성을 입력하세요"/>-->
+        </div> <br/>
+
+        <div>
+          <label th:for="secondName">이름 : </label>
+<!--          <input type="text" th:field="${secondName}" placeholder="이름을 입력하세요"/>-->
+        </div> <br/>
+
+        <div>
+          <label th:for="password">PW : </label>
+<!--          <input type="text" th:field="*{password}" placeholder="PW를 입력하세요"/>-->
+        </div> <br/>
+
+        <div>
+          <label th:for="clientId">학번 : </label>
+<!--          <input type="number" th:field="*{client.studentId}" placeholder="학번을 입력하세요"/>-->
+        </div> <br/>
+
+        <div>
+          <label th:for="age">나이 : </label>
+<!--          <input type="number" th:field="*{client.age}" placeholder="나이를 입력하세요"/>-->
+        </div> <br/>
+
+        <!-- radio button -->
+        <div>&lt;성별&gt;</div>
+        <div>
+          <label th:for="isMale">남성</label>
+<!--          <input type="radio" th:field="*{client.gender}" value="true"/>-->
+          <label th:for="isMale">여성</label>
+<!--          <input type="radio" th:field="*{client.gender}" value="true"/>-->
+        </div> <br/>
+
+        <div>
+          <div>&lt;학년&gt;</div>
+<!--          <div th:each="grade : ${grades}">-->
+<!--            <label th:for="${#ids.next('grade')}" th:text="${grade.description}"/>-->
+<!--            <input type="radio" th:field="${grade}" th:value="${grade.name()}"/>-->
+<!--          </div>-->
+        </div> <br/>
+
+        <!-- select -->
+        <div>
+          <div>&lt;전공&gt;</div>
+<!--          <select th:field="*{client.major}" style="width: 150px;">-->
+<!--            <option value="">전공을 선택하세요</option>-->
+<!--            <option th:each="major : ${majors}" th:value="${major}" th:text="${major}"/>-->
+<!--          </select>-->
+        </div> <br/>
+
+        <div align="center">
+          <button type="button" th:onclick="|location.href='@{/client/}'|">취소</button>
+          <button type="submit" style="margin-left: 30px">추가</button>
+        </div>
+      </form>
+    </div>
+
+
+    <!--
+    <div align="center">
+      <form action="/client/signup" th:object="${new_client}" method="post">
+        <div>
+          <label th:for="firstName">성 : </label>
+          <input type="text" th:field="*{firstName}" placeholder="성을 입력하세요"/>
+        </div> <br/>
+
+        <div>
+          <label th:for="secondName">이름 : </label>
+          <input type="text" th:field="${secondName}" placeholder="이름을 입력하세요"/>
+        </div> <br/>
+
+        <div>
+          <label th:for="password">PW : </label>
+          <input type="text" th:field="*{password}" placeholder="PW를 입력하세요"/>
+        </div> <br/>
+
+        <div>
+          <label th:for="clientId">학번 : </label>
+          <input type="number" th:field="*{client.studentId}" placeholder="학번을 입력하세요"/>
+        </div> <br/>
+
+        <div>
+          <label th:for="age">나이 : </label>
+          <input type="number" th:field="*{client.age}" placeholder="나이를 입력하세요"/>
+        </div> <br/>
+
+        &lt;!&ndash; radio button &ndash;&gt;
+        <div>&lt;성별&gt;</div>
+        <div>
+          <label th:for="isMale">남성</label>
+          <input type="radio" th:field="*{client.gender}" value="true"/>
+          <label th:for="isMale">여성</label>
+          <input type="radio" th:field="*{client.gender}" value="true"/>
+        </div> <br/>
+
+        <div>
+          <div>&lt;학년&gt;</div>
+          <div th:each="grade : ${grades}">
+            <label th:for="${#ids.next('grade')}" th:text="${grade.description}"/>
+            <input type="radio" th:field="${grade}" th:value="${grade.name()}"/>
+          </div>
+        </div> <br/>
+
+        &lt;!&ndash; select &ndash;&gt;
+        <div>
+          <div>&lt;전공&gt;</div>
+          <select th:field="*{client.major}" style="width: 150px;">
+            <option value="">전공을 선택하세요</option>
+            <option th:each="major : ${majors}" th:value="${major}" th:text="${major}"/>
+          </select>
+        </div> <br/>
+
+        <div align="center">
+          <button type="button" th:onclick="|location.href='@{/client/}'|">취소</button>
+          <button type="submit" style="margin-left: 30px">추가</button>
+        </div>
+      </form>
+    </div>-->
+</body>
+</html>
+<style>
+  form {
+    border: black;
+    border-style: solid;
+    width:500px;
+    text-align: left;
+    padding: 20px;
+  }
+  button {
+    height: 40px;
+    width: 100px;
+    font-size: large;
+  }
+</style>

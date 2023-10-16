@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>데이트 아누?</title>
+</head>
+<body align="center">
+<h1>학생 세부 정보</h1>
+<div align="center">
+    <div class="form-style">
+        <!--<div th:text="'이름 : ' + ${client.name}"/> <br/>
+        <div th:text="'학번 : ' + ${client.studentId}"/> <br/>
+        <div th:text="'나이 : ' + ${client.age}"/> <br/>
+
+        <div th:text="${client.gender.gender_name}" />
+        <br/>
+
+        <div th:text="'학년 : ' + ${client.grade.description}"/> <br/>
+
+        <div th:text="'전공 : ' + ${client.major}" /> <br/>-->
+
+
+        <div th:text="'이름 : '"/> <br/>
+        <div th:text="'학번 : '"/> <br/>
+        <div th:text="'나이 : '"/> <br/>
+
+        <div th:text="'학년 : ' + "/> <br/>
+
+        <div th:text="'전공 : '" /> <br/>
+        <div align="center">
+            <button type="button" th:onclick="|location.href='@{/client/}'|">뒤로가기</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<style>
+    .form-style {
+        border: black;
+        border-style: solid;
+        width:500px;
+        text-align: left;
+        padding: 20px;
+    }
+    button {
+        height: 40px;
+        width: 100px;
+        font-size: large;
+    }
+</style>
