@@ -5,6 +5,7 @@ import com.example.dateanu.domain.client.Client;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -20,11 +21,18 @@ public class Connection extends BaseEntity {
 
     @ManyToOne
     @JsonIgnore
-    @JoinColumn(name="male_client_id")
+    @JoinColumn(name = "male_client_id")
     Client maleMatcher;
 
     @ManyToOne
     @JsonIgnore
-    @JoinColumn(name="female_client_id")
+    @JoinColumn(name = "female_client_id")
     Client femaleMatcher;
+
+    @Builder
+    private Connection(Long id, Client maleMatcher, Client femaleMatcher) {
+        this.id = id;
+        this.maleMatcher = maleMatcher;
+        this.femaleMatcher = femaleMatcher;
+    }
 }
