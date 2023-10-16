@@ -69,4 +69,15 @@ public class Client extends BaseEntity {
                 ", hasExcludeAcquaintance=" + hasExcludeAcquaintance +
                 '}';
     }
+
+    @Builder
+    private Client(Long id, String email, String name, String phoneNum, Long img, String studentId, Boolean hasExcludeAcquaintance) {
+        this.id = id;
+        this.email = email;
+        this.name = name;
+        this.phoneNum = phoneNum;
+        this.img = img;
+        this.studentId = studentId;
+        this.hasExcludeAcquaintance = hasExcludeAcquaintance;
+    }
 }

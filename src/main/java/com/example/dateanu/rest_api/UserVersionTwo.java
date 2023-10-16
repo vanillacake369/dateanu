@@ -13,7 +13,7 @@ import lombok.experimental.SuperBuilder;
 import java.util.Date;
 
 @SuperBuilder
-@Data
+//@Data
 @AllArgsConstructor //@RequiredArgsConstructor => not suitable for @Builder, since it only makes constructor for final field.
 @NoArgsConstructor
 @JsonFilter("UserInfo2")
