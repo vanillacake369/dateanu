@@ -26,18 +26,16 @@ class ConnectionRepositoryTest {
         String emailA = "hohojohn@email.com";
         String nameA = "John HOHO";
         String phoneNumA = "010-1234-5678";
-        Long imgA = 1L;
         String studentIdA = "20181029";
         Boolean hasExcludeAcquaintanceA = true;
         // 회원  B 정보
         String emailB = "jeniffer@email.com";
         String nameB = "Jeniffer HU";
         String phoneNumB = "010-7979-2344";
-        Long imgB = 2L;
         String studentIdB = "20201112";
         Boolean hasExcludeAcquaintanceB = true;
-        Client clientA = createClient(emailA, nameA, imgA, studentIdA, hasExcludeAcquaintanceA);
-        Client clientB = createClient(emailB, nameB, imgB, studentIdB, hasExcludeAcquaintanceB);
+        Client clientA = createClient(emailA, nameA, studentIdA, hasExcludeAcquaintanceA);
+        Client clientB = createClient(emailB, nameB, studentIdB, hasExcludeAcquaintanceB);
 
         // 회원 A,B 저장
         Client savedClientA = clientRepository.save(clientA);
@@ -57,11 +55,10 @@ class ConnectionRepositoryTest {
         assertThat(savedConnectionOfAandB.getFemaleMatcher()).isEqualTo(savedClientB);
     }
 
-    private static Client createClient(String email, String name, Long img, String studentId, Boolean hasExcludeAcquaintance) {
+    private static Client createClient(String email, String name, String studentId, Boolean hasExcludeAcquaintance) {
         return Client.builder()
                 .email(email)
                 .name(name)
-                .img(img)
                 .studentId(studentId)
                 .hasExcludeAcquaintance(hasExcludeAcquaintance)
                 .build();

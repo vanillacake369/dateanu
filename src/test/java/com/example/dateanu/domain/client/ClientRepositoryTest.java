@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static com.example.dateanu.domain.gender.Gender.MALE;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class ClientRepositoryTest {
@@ -25,19 +26,19 @@ class ClientRepositoryTest {
         Gender gender = MALE;
         String studentId = "20181029";
         Boolean hasExcludeAcquaintance = true;
-//        Client client = Client.builder()
-//                .email(email)
-//                .name(name)
-//                .gender(gender)
-//                .studentId(studentId)
-//                .hasExcludeAcquaintance(hasExcludeAcquaintance)
-//                .build();
+        Client client = Client.builder()
+                .email(email)
+                .name(name)
+                .gender(gender)
+                .studentId(studentId)
+                .hasExcludeAcquaintance(hasExcludeAcquaintance)
+                .build();
 
         // WHEN
-//        Client savedClient = clientRepository.save(client);
-//        Client foundClient = clientRepository.findClientByStudentIdAndName(studentId, name);
+        Client savedClient = clientRepository.save(client);
+        Client foundClient = clientRepository.findClientByStudentIdAndName(studentId, name);
 
         // THEN
-//        assertThat(savedClient).isEqualTo(foundClient);
+        assertThat(savedClient).isEqualTo(foundClient);
     }
 }
