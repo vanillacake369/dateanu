@@ -2,16 +2,23 @@ package com.example.dateanu.domain.client;
 
 import com.example.dateanu.domain.BaseEntity;
 import com.example.dateanu.domain.chat.Chat;
+import com.example.dateanu.domain.client_group.ClientGroup;
+import com.example.dateanu.domain.client_img.ClientImage;
 import com.example.dateanu.domain.connection.Connection;
 import com.example.dateanu.domain.exclusion.Exclusion;
+import com.example.dateanu.domain.gender.Gender;
+import com.example.dateanu.domain.report.Report;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Getter
 @Entity
-@Table(name="client")
+@Table(name = "client")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Client extends BaseEntity {
     @Id
@@ -26,57 +33,59 @@ public class Client extends BaseEntity {
     @Column(name = "phone_num")
     private String phoneNum;
 
-    // client_img 외래키
-    private Long img;
-
     private String studentId;
+
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     // 제외 옵션 선택 여부
     @Column(name = "has_exclude_acquaintance")
     private Boolean hasExcludeAcquaintance;
 
+    /* img */
+    @OneToMany(mappedBy = "client")
+    private List<ClientImage> images;
+
+    /* group */
+    @OneToMany(mappedBy = "group")
+    private List<ClientGroup> clientGroups;
+
     /* connection */
     @OneToMany(mappedBy = "maleMatcher")
-    List<Connection> maleConnections;
+    private List<Connection> maleConnections;
 
     @OneToMany(mappedBy = "femaleMatcher")
-    List<Connection> femaleConnections;
+    private List<Connection> femaleConnections;
 
     /* chat */
     @OneToMany(mappedBy = "sender")
-    List<Chat> sentChats;
+    private List<Chat> sentChats;
 
     @OneToMany(mappedBy = "receiver")
-    List<Chat> recvChats;
+    private List<Chat> recvChats;
 
     /* exlusion */
     @OneToMany(mappedBy = "excludeInitClient")
-    List<Exclusion> excludeInits;
+    private List<Exclusion> excludeInits;
 
     @OneToMany(mappedBy = "excludeTargetClient")
-    List<Exclusion> excludeTargets;
+    private List<Exclusion> excludeTargets;
 
-    @Override
-    public String
-    toString() {
-        return "Client{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", phoneNum='" + phoneNum + '\'' +
-                ", img=" + img +
-                ", studentId='" + studentId + '\'' +
-                ", hasExcludeAcquaintance=" + hasExcludeAcquaintance +
-                '}';
-    }
+    /* report */
+    @OneToMany(mappedBy = "initiatorClient")
+    private List<Report> initReports;
+
+    @OneToMany(mappedBy = "targetClient")
+    private List<Report> targetReports;
+
 
     @Builder
-    private Client(Long id, String email, String name, String phoneNum, Long img, String studentId, Boolean hasExcludeAcquaintance) {
+    private Client(Long id, String email, String name, String phoneNum, Gender gender, String studentId, Boolean hasExcludeAcquaintance) {
         this.id = id;
         this.email = email;
         this.name = name;
         this.phoneNum = phoneNum;
-        this.img = img;
+        this.gender = gender;
         this.studentId = studentId;
         this.hasExcludeAcquaintance = hasExcludeAcquaintance;
     }

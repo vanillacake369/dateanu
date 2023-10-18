@@ -1,11 +1,14 @@
 package com.example.dateanu.domain.chat;
 
 import com.example.dateanu.domain.BaseEntity;
+import com.example.dateanu.domain.chat_file.ChatFile;
 import com.example.dateanu.domain.client.Client;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,12 +22,13 @@ public class Chat extends BaseEntity {
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "send_client_id")
-    Client sender;
+    private Client sender;
 
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "recv_client_id")
-    Client receiver;
+    private Client receiver;
 
-    // send_at => createdTime , updatedTime
+    @OneToMany(mappedBy = "chat")
+    private List<ChatFile> chatFiles;
 }

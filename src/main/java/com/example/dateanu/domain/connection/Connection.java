@@ -22,12 +22,12 @@ public class Connection extends BaseEntity {
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "male_client_id")
-    Client maleMatcher;
+    private Client maleMatcher;
 
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "female_client_id")
-    Client femaleMatcher;
+    private Client femaleMatcher;
 
     @Builder
     private Connection(Long id, Client maleMatcher, Client femaleMatcher) {
