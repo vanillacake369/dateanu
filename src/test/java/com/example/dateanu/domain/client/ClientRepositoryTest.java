@@ -1,13 +1,12 @@
 package com.example.dateanu.domain.client;
 
-import com.example.dateanu.domain.gender.Gender;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static com.example.dateanu.domain.gender.Gender.MALE;
+import static com.example.dateanu.domain.client.Gender.MALE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest

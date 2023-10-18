@@ -29,6 +29,9 @@ public class Connection extends BaseEntity {
     @JoinColumn(name = "female_client_id")
     private Client femaleMatcher;
 
+    @Enumerated(EnumType.STRING)
+    private ConnectionType connectionType;
+
     @Builder
     private Connection(Long id, Client maleMatcher, Client femaleMatcher) {
         this.id = id;

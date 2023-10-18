@@ -6,7 +6,6 @@ import com.example.dateanu.domain.client_group.ClientGroup;
 import com.example.dateanu.domain.client_img.ClientImage;
 import com.example.dateanu.domain.connection.Connection;
 import com.example.dateanu.domain.exclusion.Exclusion;
-import com.example.dateanu.domain.gender.Gender;
 import com.example.dateanu.domain.report.Report;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -38,10 +37,11 @@ public class Client extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    // 제외 옵션 선택 여부
     @Column(name = "has_exclude_acquaintance")
-    private Boolean hasExcludeAcquaintance;
+    private Boolean hasExcludeAcquaintance; // 제외 옵션 선택 여부
 
+
+    /*** === 외래키 매핑 === ***/
     /* img */
     @OneToMany(mappedBy = "client")
     private List<ClientImage> images;
@@ -78,15 +78,14 @@ public class Client extends BaseEntity {
     @OneToMany(mappedBy = "targetClient")
     private List<Report> targetReports;
 
-
     @Builder
-    private Client(Long id, String email, String name, String phoneNum, Gender gender, String studentId, Boolean hasExcludeAcquaintance) {
+    private Client(Long id, String email, String name, String phoneNum, String studentId, Gender gender, Boolean hasExcludeAcquaintance) {
         this.id = id;
         this.email = email;
         this.name = name;
         this.phoneNum = phoneNum;
-        this.gender = gender;
         this.studentId = studentId;
+        this.gender = gender;
         this.hasExcludeAcquaintance = hasExcludeAcquaintance;
     }
 }
